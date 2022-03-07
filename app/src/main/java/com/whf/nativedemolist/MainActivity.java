@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_native_inotify).setOnClickListener(this);
         findViewById(R.id.btn_app_inotify).setOnClickListener(this);
+        findViewById(R.id.btn_epoll).setOnClickListener(this);
     }
 
     @Override
@@ -31,14 +32,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_app_inotify:
                 appInotify();
                 break;
+            case R.id.btn_epoll:
+                nativeEpoll();
+                break;
         }
+    }
+
+    private void nativeEpoll() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                epoll();
+            }
+        }).start();
     }
 
     private void nativeInotify() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.i(TAG,"inotify");
                 inotify();
             }
         }).start();
@@ -49,5 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public native void inotify();
+
+    public native void epoll();
 
 }
