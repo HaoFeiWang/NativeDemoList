@@ -23,6 +23,7 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         native-string.cpp
         native-thread.cpp
+        native-stdlib.cpp
         native-inotify-epoll.cpp
         utils/log.h)
 
