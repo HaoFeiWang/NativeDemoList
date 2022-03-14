@@ -24,6 +24,8 @@ add_library( # Sets the name of the library.
         native-string.cpp
         native-thread.cpp
         native-stdlib.cpp
+        native-stdio.cpp
+        native-params.cpp
         native-inotify-epoll.cpp
         utils/log.h)
 

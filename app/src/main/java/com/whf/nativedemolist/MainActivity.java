@@ -19,10 +19,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_native_inotify).setOnClickListener(this);
-        findViewById(R.id.btn_app_inotify).setOnClickListener(this);
         findViewById(R.id.btn_epoll).setOnClickListener(this);
         findViewById(R.id.btn_test_string).setOnClickListener(this);
         findViewById(R.id.btn_test_stdlib).setOnClickListener(this);
+        findViewById(R.id.btn_test_stdio).setOnClickListener(this);
+        findViewById(R.id.btn_test_params).setOnClickListener(this);
     }
 
     @Override
@@ -30,9 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_native_inotify:
                 nativeInotify();
-                break;
-            case R.id.btn_app_inotify:
-                appInotify();
                 break;
             case R.id.btn_epoll:
                 nativeEpoll();
@@ -42,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_test_stdlib:
                 nativeStdlib();
+                break;
+            case R.id.btn_test_stdio:
+                nativeStdio();
+                break;
+            case R.id.btn_test_params:
+                nativeParams();
                 break;
         }
     }
@@ -75,4 +79,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public native void nativeString();
 
     private native void nativeStdlib();
+
+    private native void nativeStdio();
+
+    private native void nativeParams();
 }
