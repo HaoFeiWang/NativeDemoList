@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_test_stdlib).setOnClickListener(this);
         findViewById(R.id.btn_test_stdio).setOnClickListener(this);
         findViewById(R.id.btn_test_params).setOnClickListener(this);
+        findViewById(R.id.btn_time).setOnClickListener(this);
     }
 
     @Override
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_test_params:
                 nativeParams();
                 break;
+            case R.id.btn_time:
+                nativeTime();
+                break;
         }
     }
 
@@ -68,10 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).start();
     }
 
-    private void appInotify() {
-
-    }
-
     public native void inotify();
 
     public native void epoll();
@@ -83,4 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private native void nativeStdio();
 
     private native void nativeParams();
+
+    private native void nativeTime();
 }

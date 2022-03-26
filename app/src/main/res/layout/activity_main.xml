@@ -9,20 +9,6 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_native_inotify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="native-inotify" />
-
-    <Button
-        android:id="@+id/btn_epoll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="epoll" />
-
-    <Button
         android:id="@+id/btn_test_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,10 +30,30 @@
         android:text="stdio" />
 
     <Button
+        android:id="@+id/btn_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="time" />
+
+    <Button
         android:id="@+id/btn_test_params"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="params" />
+        android:text="函数参数传递" />
+    <Button
+        android:id="@+id/btn_native_inotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="native-inotify" />
+
+    <Button
+        android:id="@+id/btn_epoll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="epoll" />
 
 </LinearLayout>
