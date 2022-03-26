@@ -200,6 +200,9 @@ void test_strlen() {
     LOGD("length = %d", length);
 }
 
+/**
+ * 分割字符串
+ */
 void test_strtok() {
     char str1[100] = "www.baidu.com";
     const char str2[2] = ".";

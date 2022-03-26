@@ -13,14 +13,29 @@ class Person {
 public:
     //构造函数
     Person(std::string name) {
-        LOGD("call create");
+        LOGD("call create %s", name.c_str());
         this->name = name;
+        this->bufferSize = 10;
+        this->buffer = (char *) malloc(10);
     }
 
     //拷贝构造函数，在参数传递的时候会调用
-    Person(Person &person) {
+    Person(const Person &person) {
         LOGD("call copy create");
+        //深拷贝
         this->name = person.name;
+        this->bufferSize = person.bufferSize;
+        this->buffer = (char *) malloc(bufferSize);
+        memcpy(buffer, person.buffer, bufferSize);
+    }
+
+    //浅拷贝
+    Person(Person &&person) {
+        LOGD("call copy create2");
+        this->name = person.name;
+        this->buffer = person.buffer;
+        this->bufferSize = person.bufferSize;
+        person.buffer = nullptr;
     }
 
     Person operator=(Person person) {
@@ -33,6 +48,8 @@ public:
         LOGD("release person %s", name.c_str());
     }
 
+    char *buffer;
+    int bufferSize;
     std::string name;
 };
 
@@ -84,9 +101,18 @@ Java_com_whf_nativedemolist_MainActivity_nativeParams(
     Person person("原始值");
     LOGD("person name=%s addr=%p", person.name.c_str(), &person);
 
+    //右值引用
+    Person &&rightPerson = std::move(person);
+    //浅拷贝（移动语意）
+    Person copyPerson(rightPerson);
+    //深拷贝
+    Person copyPerson2(person);
+
+    //测试值传递
     testValueParams(person);
     LOGD("person name=%s addr=%p", person.name.c_str(), &person);
 
+    //测试指针传递
     testPointParams(&person);
     LOGD("person name=%s addr=%p", person.name.c_str(), &person);
 
@@ -118,7 +144,7 @@ Java_com_whf_nativedemolist_MainActivity_nativeParams(
     pthread_create(thread, NULL, testThread, &person);
 
     //多线程中person2会被回收，所以指针传递在多线程是不安全的
-    /*std::shared_ptr<Person> person3Sp = std::make_shared<Person>("多线程智能指针原始值");
-    pthread_t *thread2;
-    pthread_create(thread2, NULL, testThread, person3Sp);*/
+    std::shared_ptr<Person> person3Sp = std::make_shared<Person>("多线程智能指针原始值");
+    pthread_t thread2;
+    pthread_create(&thread2, NULL, testThread, &person3Sp);
 }
