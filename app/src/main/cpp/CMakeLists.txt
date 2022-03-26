@@ -23,12 +23,15 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        native-string.cpp
-        native-thread.cpp
-        native-stdlib.cpp
-        native-stdio.cpp
-        native-params.cpp
-        native-inotify-epoll.cpp
+        stdclib/native-string.cpp
+        stdclib/native-stdlib.cpp
+        stdclib/native-stdio.cpp
+        stdclib/native-params.cpp
+        stdclib/native-time.cpp
+
+        posixlib/native-thread.cpp
+
+        linuxlib/native-inotify-epoll.cpp
         utils/log.h)
 
 # Searches for a specified prebuilt library and stores the path as a

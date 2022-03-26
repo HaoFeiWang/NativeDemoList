@@ -3,7 +3,7 @@
 //
 #include <stdlib.h>
 #include <jni.h>
-#include "utils/log.h"
+#include "../utils/log.h"
 #include <string.h>
 
 /**

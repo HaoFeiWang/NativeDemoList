@@ -4,7 +4,7 @@
 #include <string.h>
 #include <jni.h>
 #include <errno.h>
-#include "utils/log.h"
+#include "../utils/log.h"
 
 /**
  * 搜索某个字符，返回该字符之后的字符串，如果没有找到返回NULL

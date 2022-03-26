@@ -5,7 +5,7 @@
 #include <jni.h>
 #include <errno.h>
 #include <string.h>
-#include "utils/log.h"
+#include "../utils/log.h"
 
 
 //函数索引

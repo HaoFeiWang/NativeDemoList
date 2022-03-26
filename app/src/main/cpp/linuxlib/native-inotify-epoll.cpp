@@ -4,7 +4,7 @@
 #include <sys/inotify.h>
 #include <sys/epoll.h>
 
-#include "utils/log.h"
+#include "../utils/log.h"
 
 int addWatchInotify(const char *path) {
     int inotifyFd = inotify_init();

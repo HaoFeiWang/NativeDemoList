@@ -7,7 +7,7 @@
 #include <string>
 #include <pthread.h>
 #include <unistd.h>
-#include "utils/log.h"
+#include "../utils/log.h"
 
 class Person {
 public:
